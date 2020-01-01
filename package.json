@@ -1,5 +1,5 @@
 {
-  "name": "supermock",
+  "name": "@rubixibuc/supermock",
   "version": "0.0.0",
   "description": "Super Mocking Utility Object",
   "main": "src/index.js",
