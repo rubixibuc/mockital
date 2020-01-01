@@ -1,0 +1,24 @@
+{
+  "name": "supermock",
+  "version": "0.0.0",
+  "description": "Super Mocking Utility Object",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubixibuc/supermock.git"
+  },
+  "keywords": [
+    "Mock",
+    "Mocking",
+    "Object"
+  ],
+  "author": "rubixibuc",
+  "license": "unlicense",
+  "bugs": {
+    "url": "https://github.com/rubixibuc/supermock/issues"
+  },
+  "homepage": "https://github.com/rubixibuc/supermock#readme"
+}
