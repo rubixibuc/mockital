@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/rubixibuc/supermock/issues"
   },
+  "files": [
+    "src/supermock/index.js"
+  ],
   "homepage": "https://github.com/rubixibuc/supermock#readme"
 }
