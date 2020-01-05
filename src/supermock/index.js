@@ -9,53 +9,32 @@ const createTarget = (original, stack) => {
 
 const inspect = proxy => proxy[CALLS];
 
+const handle = (target, frame) => {
+  if (target.original == null) {
+    const stack = [frame];
+    (target[CALLS] = target[CALLS] || []).push(stack);
+    return supermock(target, stack);
+  } else {
+    target.stack.push(frame);
+    return supermock(target.original, target.stack);
+  }
+};
+
 const handlers = {
   construct(target, args) {
-    const calls = (target[CALLS] = target[CALLS] || []);
-    if (target.original == null) {
-      const stack = [["new", args]];
-      calls.push(stack);
-      return supermock(target, stack);
-    } else {
-      target.stack.push(["new", args]);
-      return supermock(target.original, target.stack);
-    }
+    return handle(target, ["new", args]);
   },
   get(target, key) {
-    const calls = (target[CALLS] = target[CALLS] || []);
     if (key === CALLS) {
-      return calls;
+      return target[CALLS];
     }
-    if (target.original == null) {
-      const stack = [["get", key]];
-      calls.push(stack);
-      return supermock(target, stack);
-    } else {
-      target.stack.push(["get", key]);
-      return supermock(target.original, target.stack);
-    }
+    return handle(target, ["get", key]);
   },
   set(target, key, value) {
-    const calls = (target[CALLS] = target[CALLS] || []);
-    if (target.original == null) {
-      const stack = [["set", key, value]];
-      calls.push(stack);
-      return supermock(target, stack);
-    } else {
-      target.stack.push(["set", key, value]);
-      return supermock(target.original, target.stack);
-    }
+    return handle(target, ["set", key]);
   },
   apply: function(target, thisArg, argumentsList) {
-    const calls = (target[CALLS] = target[CALLS] || []);
-    if (target.original == null) {
-      const stack = [["apply", argumentsList]];
-      calls.push(stack);
-      return supermock(target, stack);
-    } else {
-      target.stack.push(["apply", argumentsList]);
-      return supermock(target.original, target.stack);
-    }
+    return handle(target, ["apply", arguments]);
   }
 };
 
