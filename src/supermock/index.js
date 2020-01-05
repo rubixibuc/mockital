@@ -33,8 +33,8 @@ const handlers = {
   set(target, key, value) {
     return handle(target, ["set", key]);
   },
-  apply: function(target, thisArg, argumentsList) {
-    return handle(target, ["apply", arguments]);
+  apply: function(target, thisArg, argumentList) {
+    return handle(target, ["apply", argumentList]);
   }
 };
 
