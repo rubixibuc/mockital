@@ -1,6 +1,6 @@
 # MOCKITAL 🦸
 
-[![Build Status](https://travis-ci.org/rubixibuc/mockital.svg?branch=master)](https://travis-ci.org/rubixibuc/mockital)
+[![Build Status](https://travis-ci.org/rubixibuc/mockital.svg?branch=master)](https://travis-ci.org/rubixibuc/mockital) [![Coverage Status](https://coveralls.io/repos/github/rubixibuc/mockital/badge.svg?branch=master)](https://coveralls.io/github/rubixibuc/mockital?branch=master)
 
 - Supports gets, sets, new, and invocation
 - Supports nested everything
