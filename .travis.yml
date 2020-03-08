@@ -7,4 +7,4 @@ deploy:
     tags: true
     repo: rubixibuc/mockital
     branch: master
-script: npm run coveralls
+script: npm ci && npm run coveralls
