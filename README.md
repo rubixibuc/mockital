@@ -18,7 +18,7 @@ npm i mockital
 ### Examples
 
 ```javascript 1.8
-import { mock, inspect } from "mockital";
+const { mock, inspect } = require("mockital");
 
 let Mock = mock();
 
