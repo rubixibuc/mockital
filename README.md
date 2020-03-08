@@ -5,7 +5,7 @@
 
 **More utilities are coming for inspecting/asserting/stubbing**
 
-**Perfect for snapshot testing mocks with jest**
+**Perfect for snapshot testing mocks with Jest**
 
 ### Examples
 
