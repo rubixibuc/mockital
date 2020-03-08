@@ -12,7 +12,7 @@ const handle = (target, frame) => {
   target[STACK].push(frame);
   const stack = [];
   frame.push(stack);
-  return supermock(stack);
+  return mock(stack);
 };
 
 const handlers = {
@@ -33,9 +33,9 @@ const handlers = {
   }
 };
 
-const supermock = (stack = []) => new Proxy(createTarget(stack), handlers);
+const mock = (stack = []) => new Proxy(createTarget(stack), handlers);
 
 module.exports = {
   inspect,
-  supermock
+  mock
 };

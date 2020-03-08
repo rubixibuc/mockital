@@ -1,4 +1,4 @@
-# SUPERMOCK 🦸
+# MOCKITAL 🦸
 
 - Supports gets, sets, new, and invocation
 - Supports nested everything
@@ -10,15 +10,15 @@
 ### Examples
 
 ```javascript 1.8
-import { supermock, inspect } from "@rubixibuc/supermock";
+import { mock, inspect } from "mockital";
 
-let SuperMock = supermock();
+let Mock = mock();
 
-let wow = new SuperMock.a.b["c"](1, "2", [1, 2]);
+let wow = new Mock.a.b["c"](1, "2", [1, 2]);
 
 wow.c.d(1, 2, 3).e = "this is amazing";
 
-JSON.stringify(inspect(SuperMock)) ===
+JSON.stringify(inspect(Mock)) ===
   [
     [
       "get",

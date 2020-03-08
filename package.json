@@ -1,14 +1,14 @@
 {
-  "name": "@rubixibuc/supermock",
+  "name": "mockital",
   "version": "0.2.6",
   "description": "Super Mocking Utility Object",
-  "main": "src/supermock/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rubixibuc/supermock.git"
+    "url": "git+https://github.com/rubixibuc/mockital.git"
   },
   "keywords": [
     "Mock",
@@ -18,10 +18,10 @@
   "author": "rubixibuc",
   "license": "unlicense",
   "bugs": {
-    "url": "https://github.com/rubixibuc/supermock/issues"
+    "url": "https://github.com/rubixibuc/mockital/issues"
   },
   "files": [
-    "src/supermock/index.js"
+    "src/index.js"
   ],
-  "homepage": "https://github.com/rubixibuc/supermock#readme"
+  "homepage": "https://github.com/rubixibuc/mockital#readme"
 }
