@@ -14,19 +14,22 @@ import { mock, inspect } from "mockital";
 
 let Mock = mock();
 
-let wow = new Mock.a.b["c"](1, "2", [1, 2]);
+Mock.a = "is this is amazing?";
 
-wow.c.d(1, 2, 3).e = "this is amazing";
+let wow = new Mock.b.c["c"](1, "2", [1, 2]);
+
+wow.d.e(1, 2, 3).f = "this is amazing";
 
 JSON.stringify(inspect(Mock)) ===
   [
+    ["set", "a", "is this is amazing?", []],
     [
       "get",
-      "a",
+      "b",
       [
         [
           "get",
-          "b",
+          "c",
           [
             [
               "get",
@@ -38,16 +41,16 @@ JSON.stringify(inspect(Mock)) ===
                   [
                     [
                       "get",
-                      "c",
+                      "d",
                       [
                         [
                           "get",
-                          "d",
+                          "e",
                           [
                             [
                               "apply",
                               [1, 2, 3],
-                              [["set", "e", "this is amazing", []]]
+                              [["set", "f", "this is amazing", []]]
                             ]
                           ]
                         ]
@@ -66,12 +69,12 @@ JSON.stringify(inspect(wow)) ===
   [
     [
       "get",
-      "c",
+      "d",
       [
         [
           "get",
-          "d",
-          [["apply", [1, 2, 3], [["set", "e", "this is amazing", []]]]]
+          "e",
+          [["apply", [1, 2, 3], [["set", "f", "this is amazing", []]]]]
         ]
       ]
     ]
