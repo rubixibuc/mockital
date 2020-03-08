@@ -1,6 +1,6 @@
 {
   "name": "@rubixibuc/supermock",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Super Mocking Utility Object",
   "main": "src/supermock/index.js",
   "scripts": {
