@@ -1,6 +1,6 @@
 const subject = require("./index");
 
-describe("stack", () => {
+describe("operations", () => {
   it("should be symbol", () => {
     const a = { [subject]: "a" };
 

@@ -1,36 +1,32 @@
-const STACK = require("../stack");
+const OPERATIONS = require("../operations");
 
-const handle = (target, frame) => {
-  target[STACK].push(frame);
-  const stack = [];
-  frame.push(stack);
-  return mock(stack);
+const handle = (target, operation) => {
+  target[OPERATIONS].push(operation);
+  const operations = [];
+  operation.push(operations);
+  return mock(operations);
 };
+
+const construct = (target, args) => handle(target, ["new", args]);
+const get = (target, key) =>
+  key === OPERATIONS ? target[OPERATIONS] : handle(target, ["get", key]);
+const set = (target, key, value) => handle(target, ["set", key, value]);
+const apply = (target, thisArg, argumentList) =>
+  handle(target, ["apply", argumentList]);
 
 const handlers = {
-  construct(target, args) {
-    return handle(target, ["new", args]);
-  },
-  get(target, key) {
-    if (key === STACK) {
-      return target[STACK];
-    }
-    return handle(target, ["get", key]);
-  },
-  set(target, key, value) {
-    return handle(target, ["set", key, value]);
-  },
-  apply: function(target, thisArg, argumentList) {
-    return handle(target, ["apply", argumentList]);
-  }
+  construct,
+  get,
+  set,
+  apply
 };
 
-const createTarget = stack => {
+const createTarget = operations => {
   const target = function() {};
-  target[STACK] = stack;
+  target[OPERATIONS] = operations;
   return target;
 };
 
-const mock = (stack = []) => new Proxy(createTarget(stack), handlers);
+const mock = (operations = []) => new Proxy(createTarget(operations), handlers);
 
 module.exports = mock;
