@@ -8,4 +8,4 @@ deploy:
     repo: rubixibuc/mockital
     branch: master
 script: npm ci && npm run coveralls
-if: tag IS present AND branch = "master"
+if: tag IS present
