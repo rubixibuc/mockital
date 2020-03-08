@@ -1,4 +1,5 @@
 # MOCKITAL 🦸
+
 [![Build Status](https://travis-ci.org/rubixibuc/mockital.svg?branch=master)](https://travis-ci.org/rubixibuc/mockital)
 
 - Supports gets, sets, new, and invocation
