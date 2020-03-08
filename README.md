@@ -1,4 +1,4 @@
-# SUPERMOCK 🦸
+# SUPERMOCK
 
 - Supports gets, sets, new, and invocation
 - Supports nested everything
