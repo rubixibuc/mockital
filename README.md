@@ -9,6 +9,12 @@
 
 **Perfect for snapshot testing mocks with Jest**
 
+### Install
+
+```shell script
+npm i mockital
+```
+
 ### Examples
 
 ```javascript 1.8
