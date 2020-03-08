@@ -16,10 +16,10 @@ describe("mock", () => {
   });
 
   it("should mock constructor without error", () => {
-    new mock();
+    new mock("a", "b");
   });
 
   it("should mock apply without error", () => {
-    mock();
+    mock(1, 2);
   });
 });

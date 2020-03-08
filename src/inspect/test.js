@@ -36,12 +36,15 @@ describe("inspect", () => {
   });
 
   it("should inspect constructor correctly", () => {
-    new mockObj();
+    new mockObj(1, 2);
     expect(subject(mockObj)).toMatchInlineSnapshot(`
       Array [
         Array [
           "new",
-          Array [],
+          Array [
+            1,
+            2,
+          ],
           Array [],
         ],
       ]
@@ -49,16 +52,19 @@ describe("inspect", () => {
   });
 
   it("should inspect apply correctly", () => {
-    mockObj();
+    mockObj("a", "b");
     expect(subject(mockObj)).toMatchInlineSnapshot(`
-Array [
-  Array [
-    "apply",
-    Array [],
-    Array [],
-  ],
-]
-`);
+      Array [
+        Array [
+          "apply",
+          Array [
+            "a",
+            "b",
+          ],
+          Array [],
+        ],
+      ]
+    `);
   });
 
   it("should match readme example", () => {
@@ -68,62 +74,106 @@ Array [
 
     wow.d.e(1, 2, 3).f = "this is amazing";
 
-    expect(subject(mockObj)).toEqual([
-      ["set", "a", "is this is amazing?", []],
-      [
+    expect(subject(mockObj)).toMatchInlineSnapshot(`
+Array [
+  Array [
+    "set",
+    "a",
+    "is this is amazing?",
+    Array [],
+  ],
+  Array [
+    "get",
+    "b",
+    Array [
+      Array [
         "get",
-        "b",
-        [
-          [
+        "c",
+        Array [
+          Array [
             "get",
             "c",
-            [
-              [
-                "get",
-                "c",
-                [
-                  [
-                    "new",
-                    [1, "2", [1, 2]],
-                    [
-                      [
+            Array [
+              Array [
+                "new",
+                Array [
+                  1,
+                  "2",
+                  Array [
+                    1,
+                    2,
+                  ],
+                ],
+                Array [
+                  Array [
+                    "get",
+                    "d",
+                    Array [
+                      Array [
                         "get",
-                        "d",
-                        [
-                          [
-                            "get",
-                            "e",
-                            [
-                              [
-                                "apply",
-                                [1, 2, 3],
-                                [["set", "f", "this is amazing", []]]
-                              ]
-                            ]
-                          ]
-                        ]
-                      ]
-                    ]
-                  ]
-                ]
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]);
-    expect(subject(wow)).toEqual([
-      [
+                        "e",
+                        Array [
+                          Array [
+                            "apply",
+                            Array [
+                              1,
+                              2,
+                              3,
+                            ],
+                            Array [
+                              Array [
+                                "set",
+                                "f",
+                                "this is amazing",
+                                Array [],
+                              ],
+                            ],
+                          ],
+                        ],
+                      ],
+                    ],
+                  ],
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+  ],
+]
+`);
+    expect(subject(wow)).toMatchInlineSnapshot(`
+Array [
+  Array [
+    "get",
+    "d",
+    Array [
+      Array [
         "get",
-        "d",
-        [
-          [
-            "get",
-            "e",
-            [["apply", [1, 2, 3], [["set", "f", "this is amazing", []]]]]
-          ]
-        ]
-      ]
-    ]);
+        "e",
+        Array [
+          Array [
+            "apply",
+            Array [
+              1,
+              2,
+              3,
+            ],
+            Array [
+              Array [
+                "set",
+                "f",
+                "this is amazing",
+                Array [],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ],
+  ],
+]
+`);
   });
 });
