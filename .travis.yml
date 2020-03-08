@@ -1,0 +1,10 @@
+deploy:
+  provider: npm
+  email: rubixibuc@gmail.com
+  api_key:
+    secure: s1U60j00FQTCMUeP7UXsy/dmAfrsgzmHF2n68eSFjrXR550mEhsKSeYSt0dmnyjxXSfHdWBMNvZYRwnT2vIoByvsA0wdOGp9UpKfnuQxX/bHICd1RNlLp8j8yryX3WP2oES3Ja7M+qKbvaIS+WD4g2CeUBHUkXLONtSBwCxVEP55KFfMYPziX8HbqPZgpptj74TJ0ZbSh87F/PVwOL+bzJkgx11QZzC2trbsSa2Aev98IRl1TmDQ6UqPNZEpBUUwksfiOzDAYtNeMS9hpoyQUP+vtBPHKZnr0ilZ20Ve3lUrtH7wRQByhueUBakKn3HHd5zwHklUmf9tyKmNBoTE9T17ZgoDa9iP5wn5j/q21bPo9/GIngnCm+GB4nqL/Jios7Y8mLhoNAbT0U5Kasb1ssVw/OuqXdvF/cpZlyyOQDB3mu/4g7M+rj3RU6mt1l84kbk0WGGBWpzalgzNM6yoI1WGQoaL2BoGTlrfYQSlyNxlzSRmjfWMLF4m4a3MRyDqANVJ3wsRDNTID4xi9sDtoh04qbTdk6z3+7xFToHg2Ec3XeoBU8hoCtHl98BpIWNaPnUBJUdTlKLWeesrnXdvGj1PC/yjzugJTRvlz12yDrjA43n+CV0CxGGXaeQOx8PlhXbxebEbo/ZF+JRmAu5Yr9vigyKGUXzouZ8LFvhvr3I=
+  on:
+    tags: true
+    repo: rubixibuc/mockital
+    branch: master
+script: npm run coveralls
