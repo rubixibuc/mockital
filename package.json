@@ -22,7 +22,7 @@
     "url": "https://github.com/rubixibuc/mockital/issues"
   },
   "files": [
-    "src/index.js"
+    "src/**"
   ],
   "homepage": "https://github.com/rubixibuc/mockital#readme",
   "devDependencies": {
