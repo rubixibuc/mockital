@@ -1,23 +1,18 @@
 const CALLS = Symbol("calls");
 
-const createTarget = (original, stack) => {
+const createTarget = stack => {
   const target = function() {};
-  target.original = original;
-  target.stack = stack;
+  target[CALLS] = stack;
   return target;
 };
 
 const inspect = proxy => proxy[CALLS];
 
 const handle = (target, frame) => {
-  if (target.original == null) {
-    const stack = [frame];
-    (target[CALLS] = target[CALLS] || []).push(stack);
-    return supermock(target, stack);
-  } else {
-    target.stack.push(frame);
-    return supermock(target.original, target.stack);
-  }
+  target[CALLS].push(frame);
+  const stack = [];
+  frame.push(stack);
+  return supermock(stack);
 };
 
 const handlers = {
@@ -38,8 +33,7 @@ const handlers = {
   }
 };
 
-const supermock = (original, stack) =>
-  new Proxy(createTarget(original, stack), handlers);
+const supermock = (stack = []) => new Proxy(createTarget(stack), handlers);
 
 module.exports = {
   inspect,
