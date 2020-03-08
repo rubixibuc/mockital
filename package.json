@@ -1,6 +1,6 @@
 {
   "name": "mockital",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "mock anything",
   "main": "src/index.js",
   "scripts": {
