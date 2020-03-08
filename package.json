@@ -2,7 +2,7 @@
   "name": "@rubixibuc/supermock",
   "version": "0.2.2",
   "description": "Super Mocking Utility Object",
-  "main": "src/index.js",
+  "main": "src/supermock/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
