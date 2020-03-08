@@ -4,6 +4,7 @@
 - Supports nested everything
 
 **More utilities are coming for inspecting/asserting/stubbing**
+
 **Perfect for snapshot testing mocks with jest**
 
 ### Examples
