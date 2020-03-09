@@ -20,11 +20,11 @@ npm i mockital
 ```javascript 1.8
 const { mock, inspect } = require("mockital");
 
-let Mock = mock();
+const Mock = mock();
 
 Mock.a = "is this is amazing?";
 
-let wow = new Mock.b.c["c"](1, "2", [1, 2]);
+const wow = new Mock.b.c["c"](1, "2", [1, 2]);
 
 wow.d.e(1, 2, 3).f = "this is amazing";
 
