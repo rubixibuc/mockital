@@ -1,3 +1,3 @@
-const STACK = require("../operations");
+const OPERATIONS = require("../operations");
 
-module.exports = mock => mock[STACK];
+module.exports = mock => mock[OPERATIONS];
