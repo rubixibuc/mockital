@@ -22,7 +22,7 @@ const checkMatch = (operations, match) => {
   return false;
 };
 
-const handle = (target, operation, match) => {
+const handle = (target, operation, nest) => {
   target[OPERATIONS].push(operation);
   const operations = [];
   Object.defineProperty(operations, "operation", { value: operation });
@@ -31,7 +31,7 @@ const handle = (target, operation, match) => {
   });
   operation.push(operations);
 
-  if (match) {
+  if (nest) {
     const matched = target[MATCHES].reverse().find(match =>
       checkMatch(operations, match[1])
     );
@@ -39,9 +39,9 @@ const handle = (target, operation, match) => {
     if (matched) {
       return matched[0];
     }
-  }
 
-  return mock(operations, [...target[MATCHES]]);
+    return mock(operations, [...target[MATCHES]]);
+  }
 };
 
 const construct = (target, args) => handle(target, ["new", args], true);
