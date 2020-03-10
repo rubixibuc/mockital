@@ -25,4 +25,13 @@ describe("when", () => {
 
     expect(new Mock("a", "b")).toEqual({ a: "a" });
   });
+
+  it("should return last value assigned to get", () => {
+    const Mock = mock();
+
+    subject("a", mock().a, Mock);
+    subject("b", mock().a, Mock);
+
+    expect(Mock.a).toEqual("b");
+  });
 });
