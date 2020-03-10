@@ -46,7 +46,7 @@ const handle = (target, operation, nest) => {
 
 const construct = (target, args) => handle(target, ["new", args], true);
 const get = (target, key) =>
-  [OPERATIONS, MATCHES].indexOf(key) > -1
+  [OPERATIONS, MATCHES, "toString"].indexOf(key) > -1
     ? target[key]
     : handle(target, ["get", key], true);
 const set = (target, key, value) => {
@@ -67,6 +67,9 @@ const createTarget = (operations = [], matches = []) => {
   const target = function() {};
   target[OPERATIONS] = operations;
   target[MATCHES] = matches;
+  target.toString = () => {
+    return JSON.stringify(target[OPERATIONS]);
+  };
   return target;
 };
 

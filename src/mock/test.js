@@ -22,4 +22,12 @@ describe("mock", () => {
   it("should mock apply without error", () => {
     mock(1, 2);
   });
+
+  it("should convert mock to string", () => {
+    mock.a.b.c("1", 2);
+
+    expect(mock.toString()).toMatchInlineSnapshot(
+      `"[[\\"get\\",\\"a\\",[[\\"get\\",\\"b\\",[[\\"get\\",\\"c\\",[[\\"apply\\",[\\"1\\",2],[]]]]]]]]]"`
+    );
+  });
 });
