@@ -34,4 +34,12 @@ describe("when", () => {
 
     expect(Mock.a).toEqual("b");
   });
+
+  it("should match readme example", () => {
+    const Mock = mock();
+
+    subject("a", mock().a.b.c("1", "2", "3"), Mock);
+
+    expect(Mock.a.b.c("1", "2", "3")).toEqual("a");
+  });
 });
