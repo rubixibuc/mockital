@@ -1,18 +1,60 @@
 const OPERATIONS = require("../operations");
+const MATCHES = require("../matches");
 
-const handle = (target, operation) => {
-  target[OPERATIONS].push(operation);
-  const operations = [];
-  operation.push(operations);
-  return mock(operations);
+const checkMatch = (operations, match) => {
+  let same = true;
+
+  for (let i = 0; i < operations.operation.length - 1; i++) {
+    if (
+      JSON.stringify(operations.operation[i]) !==
+      JSON.stringify(match.operation[i])
+    ) {
+      same = false;
+    }
+  }
+  if (same && !match.operations.operation) {
+    return true;
+  }
+  if (same && match.operations.operation && operations.operations.operation) {
+    return checkMatch(operations.operations, match.operations);
+  }
+
+  return false;
 };
 
-const construct = (target, args) => handle(target, ["new", args]);
+const handle = (target, operation, match) => {
+  target[OPERATIONS].push(operation);
+  const operations = [];
+  Object.defineProperty(operations, "operation", { value: operation });
+  Object.defineProperty(operations, "operations", {
+    value: target[OPERATIONS]
+  });
+  operation.push(operations);
+
+  if (match) {
+    const matched = target[MATCHES].reverse().find(match =>
+      checkMatch(operations, match[1])
+    );
+
+    if (matched) {
+      return matched[0];
+    }
+  }
+
+  return mock(operations, [...target[MATCHES]]);
+};
+
+const construct = (target, args) => handle(target, ["new", args], true);
 const get = (target, key) =>
-  key === OPERATIONS ? target[OPERATIONS] : handle(target, ["get", key]);
-const set = (target, key, value) => handle(target, ["set", key, value]);
+  [OPERATIONS, MATCHES].indexOf(key) > -1
+    ? target[key]
+    : handle(target, ["get", key], true);
+const set = (target, key, value) => {
+  handle(target, ["set", key, value], false);
+  return true;
+};
 const apply = (target, thisArg, argumentList) =>
-  handle(target, ["apply", argumentList]);
+  handle(target, ["apply", argumentList], true);
 
 const handlers = {
   construct,
@@ -21,12 +63,14 @@ const handlers = {
   apply
 };
 
-const createTarget = operations => {
+const createTarget = (operations = [], matches = []) => {
   const target = function() {};
   target[OPERATIONS] = operations;
+  target[MATCHES] = matches;
   return target;
 };
 
-const mock = (operations = []) => new Proxy(createTarget(operations), handlers);
+const mock = (operations, matches) =>
+  new Proxy(createTarget(operations, matches), handlers);
 
 module.exports = mock;
