@@ -5,9 +5,29 @@
 - Supports gets, sets, new, and invocation
 - Supports nested everything
 
+**More utilities are coming for inspecting/asserting/stubbing**
+
 **Perfect for snapshot testing mocks with Jest**
 
+### Install
+
+```shell script
+npm i mockital
+```
+
 ### Examples
+
+##### Stubbing values **NEW**
+
+```javascript 1.8
+const { mock, when } = require("mockital");
+
+const Mock = mock();
+
+when("a", mock().a.b.c("1", "2", "3"), Mock);
+
+Mock.a.b.c("1", "2", "3") === "a";
+```
 
 ##### Inspecting
 
@@ -81,16 +101,4 @@ JSON.stringify(inspect(wow)) ===
       ]
     ]
   ];
-```
-
-##### Stubbing values **NEW**
-
-```javascript 1.8
-const { mock, when } = require("mockital");
-
-const Mock = mock();
-
-when("a", mock().a.b.c("1", "2", "3"), Mock);
-
-Mock.a.b.c("1", "2", "3") === "a";
 ```
