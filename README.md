@@ -17,7 +17,7 @@ npm i mockital
 
 ### Examples
 
-##### Stubbing values **NEW**
+##### Stubbing values **(NEW)**
 
 ```javascript 1.8
 const { mock, when } = require("mockital");
