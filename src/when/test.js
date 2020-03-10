@@ -18,7 +18,7 @@ describe("when", () => {
     expect(Mock.a("1", "2")).toEqual("b");
   });
 
-  it("should return correct value on contruction", () => {
+  it("should return correct value on construction", () => {
     const Mock = mock();
 
     subject({ a: "a" }, new (mock())("a", "b"), Mock);
