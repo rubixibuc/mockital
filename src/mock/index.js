@@ -10,6 +10,7 @@ const checkMatch = (operations, match) => {
       JSON.stringify(match.operation[i])
     ) {
       same = false;
+      break;
     }
   }
   if (same && !match.operations.operation) {
