@@ -17,6 +17,35 @@ npm i mockital
 
 ### Examples
 
+##### Reset mock **new**
+
+```javascript 1.8
+const { mock, reset, inspect } = require("mockital");
+
+const Mock = mock();
+
+Mock.a.b.c("1", "2", "3");
+
+reset(Mock);
+
+JSON.stringify(inspect(Mock)) === [];
+```
+
+##### Reset stubbed values **new**
+
+```javascript 1.8
+const { mock, resetWhen, when } = require("mockital");
+
+const Mock = mock();
+
+when("a", mock().a.b.c("1", "2", "3"), Mock);
+
+resetWhen(Mock);
+
+// stubbed value no longer returned
+Mock.a.b.c("1", "2", "3").d.e;
+```
+
 ##### Stubbing values **(NEW)**
 
 ```javascript 1.8

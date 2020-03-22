@@ -47,10 +47,14 @@ const handle = (target, operation, nest) => {
 
 const construct = (target, args) => handle(target, ["new", args], true);
 const get = (target, key) =>
-  [OPERATIONS, MATCHES].indexOf(key) > -1
+  [OPERATIONS, MATCHES].indexOf(key) !== -1
     ? target[key]
     : handle(target, ["get", key], true);
 const set = (target, key, value) => {
+  if ([OPERATIONS, MATCHES].indexOf(key) !== -1) {
+    target[key] = value;
+    return true;
+  }
   handle(target, ["set", key, value], false);
   return true;
 };
