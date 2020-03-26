@@ -7,5 +7,5 @@ deploy:
     tags: true
     repo: rubixibuc/mockital
     branch: master
-script: npm ci && npm run coveralls
+script: set -o pipefail && npm ci && npm run coveralls
 if: tag IS present OR branch = master
