@@ -23,6 +23,6 @@ describe("reset", () => {
 
     subject(Mock);
 
-    expect(util.types.isProxy(Mock.a)).toBe(true);
+    expect(util.types.isProxy(Mock.a.b.c("1", "2", "3").d.e)).toBe(true);
   });
 });
