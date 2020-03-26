@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
-    "coveralls": "shopt -s pipefail && jest --coverage --coverageReporters=text-lcov | coveralls",
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls && exit ${PIPESTATUS[0]}",
     "prettier": "prettier --write \"src/**/*.{js,md}\" README.md"
   },
   "repository": {
