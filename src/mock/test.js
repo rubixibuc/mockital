@@ -1,25 +1,25 @@
 const subject = require("./index");
 
 describe("mock", () => {
-  let mock;
+  let Mock;
 
   beforeEach(() => {
-    mock = subject();
+    Mock = subject();
   });
 
   it("should mock get without error", () => {
-    const a = mock.a;
+    const a = Mock.a;
   });
 
   it("should mock set without error", () => {
-    mock.a = "a";
+    Mock.a = "a";
   });
 
   it("should mock constructor without error", () => {
-    new mock("a", "b");
+    new Mock("a", "b");
   });
 
   it("should mock apply without error", () => {
-    mock(1, 2);
+    Mock(1, 2);
   });
 });

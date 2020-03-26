@@ -2,15 +2,15 @@ const subject = require("./index");
 const mock = require("../mock");
 
 describe("inspect", () => {
-  let mockObj;
+  let Mock;
 
   beforeEach(() => {
-    mockObj = mock();
+    Mock = mock();
   });
 
   it("should inspect get correctly", () => {
-    const a = mockObj.a;
-    expect(subject(mockObj)).toMatchInlineSnapshot(`
+    const a = Mock.a;
+    expect(subject(Mock)).toMatchInlineSnapshot(`
       Array [
         Array [
           "get",
@@ -22,8 +22,8 @@ describe("inspect", () => {
   });
 
   it("should inspect set correctly", () => {
-    mockObj.a = "a";
-    expect(subject(mockObj)).toMatchInlineSnapshot(`
+    Mock.a = "a";
+    expect(subject(Mock)).toMatchInlineSnapshot(`
       Array [
         Array [
           "set",
@@ -36,8 +36,8 @@ describe("inspect", () => {
   });
 
   it("should inspect constructor correctly", () => {
-    new mockObj(1, 2);
-    expect(subject(mockObj)).toMatchInlineSnapshot(`
+    new Mock(1, 2);
+    expect(subject(Mock)).toMatchInlineSnapshot(`
       Array [
         Array [
           "new",
@@ -52,8 +52,8 @@ describe("inspect", () => {
   });
 
   it("should inspect apply correctly", () => {
-    mockObj("a", "b");
-    expect(subject(mockObj)).toMatchInlineSnapshot(`
+    Mock("a", "b");
+    expect(subject(Mock)).toMatchInlineSnapshot(`
       Array [
         Array [
           "apply",
@@ -68,13 +68,13 @@ describe("inspect", () => {
   });
 
   it("should match readme example", () => {
-    mockObj.a = "is this is amazing?";
+    Mock.a = "is this is amazing?";
 
-    let wow = new mockObj.b.c["c"](1, "2", [1, 2]);
+    let wow = new Mock.b.c["c"](1, "2", [1, 2]);
 
     wow.d.e(1, 2, 3).f = "this is amazing";
 
-    expect(subject(mockObj)).toMatchInlineSnapshot(`
+    expect(subject(Mock)).toMatchInlineSnapshot(`
 Array [
   Array [
     "set",
