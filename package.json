@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
-    "coveralls": "coveralls < <(jest --coverage --coverageReporters=text-lcov)",
+    "coveralls": "jest --coverage && coveralls < coverage/lcov.info",
     "prettier": "prettier --write \"src/**/*.{js,md}\" README.md"
   },
   "repository": {
