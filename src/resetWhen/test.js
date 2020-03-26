@@ -15,7 +15,7 @@ describe("reset", () => {
 
     subject(Mock);
 
-    expect(util.types.isProxy(Mock.a)).toBe(false);
+    expect(util.types.isProxy(Mock.a)).toBe(true);
   });
 
   it("should match readme example", () => {
